@@ -1,2 +1,28 @@
-# oak-wifi-fingerbot-releases
-Public firmware releases for Digistump Oak. Application source is maintained separately.
+# Oak firmware releases
+
+Digistump Oak용 실행 펌웨어와 인증된 배포 정보만 공개하는 저장소입니다.
+소스 코드는 별도의 비공개 저장소에서 관리합니다.
+
+## 현재 상태
+
+자동 다운로드용 Oak 펌웨어와 첫 서명된 배포는 준비 중입니다.
+이 저장소를 만든 것만으로 기존 Oak에 원격 업데이트 기능이 설치되지는 않습니다.
+현재 공개된 펌웨어 Release는 없습니다.
+
+## 배포 형식
+
+검증을 마친 Release에는 다음 파일만 포함합니다.
+
+- `oak-firmware.bin`: native rBoot 실행 이미지
+- `oak-release.json`: 저장소·배포 번호·버전·기종/배치·크기·SHA-256·만료 정보
+- `oak-release.sig`: 위 배포 정보에 대한 Ed25519 서명
+- `oak-release-key.json`: 서명 공개키 식별 정보
+
+기기는 미리 등록된 신뢰 공개키로 서명을 확인해야 합니다.
+함께 다운로드한 공개키 파일을 새 신뢰 기준으로 자동 채택하지 않습니다.
+
+SHA-256은 파일 무결성 검사입니다. 배포자 인증은 별도 서명 검증을 사용합니다.
+일반 업데이트는 비활성 앱 영역만 사용하며 원래 공장 영역과 관리 복구 영역을 보존합니다.
+소프트웨어의 쓰기 제한을 하드웨어 보호 또는 모든 전원 차단에 대한 복구 보장으로 해석하지 않습니다.
+
+개인키, 토큰, Wi-Fi 설정, 장치 진단 로그는 배포 파일에 포함하지 않습니다.
